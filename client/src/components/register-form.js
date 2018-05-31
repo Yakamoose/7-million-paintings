@@ -81,10 +81,17 @@ export class RegisterUserForm extends React.Component {
                 {successMessage}
                 {errorMessage}
                 <Field
-                    name="name"
+                    name="firstName"
                     type="text"
                     component={Input}
-                    label="Name"
+                    label="First Name"
+                    validate={[required, nonEmpty]}
+                />
+                <Field
+                    name="lastName"
+                    type="text"
+                    component={Input}
+                    label="Last Name"
                     validate={[required, nonEmpty]}
                 />
                 <Field

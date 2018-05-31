@@ -68,8 +68,7 @@ lineUpB.forEach(function(item, index) {
 export default function Art() {
   return (
     <div className="body">
-    <NavBar />
-    <LogIn />
+
     <div id="art">
       <div className="container container1">
         <div className="art piece1 rotate-scale-up"></div>
