@@ -22,7 +22,7 @@ userSchema.virtual('fullName').get(function() {
 userSchema.methods.serialize = function() {
   return {
     firstName: this.firstName,
-    name: this.fullName,
+    fullName: this.fullName,
     userName: this.userName,
     password: this.password,
     email: this.email,

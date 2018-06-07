@@ -1,29 +1,41 @@
 
 #art {
-  position: absolute;
-  width: 200px;
-  height: 400px;
-  top: 20%;
+  position: relative;
+  width: 25%;
+  height: 44%;
+  top: 4%;
   left: 51%;
-  padding-bottom: 50px;
+  /*padding-bottom: 50px;*/
+
 }
 
 #art2 {
-  position: absolute;
-  width: 130px;
-  height: 350px;
-  top: 20%;
+  position: relative;
+  width: 16.25%;
+  height: 44%;
+  top: -47%;
   left: 51%;
   /*padding-bottom: 50px;*/
 }
 
+.body {
+  /*border: 3px solid black;*/
+  height: 420px;
+  width: 420px;
+  margin-top: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  transform: rotate(-45deg);
+
+}
+
+
+
 .container {
   position: relative;
-
   width: 100%;
   height: 100%;
   overflow: hidden;
-
 }
 
 .container1 {
@@ -32,14 +44,18 @@
 
 .container2 {
   -webkit-transform: rotate(-90deg);
-    -moz-transform: rotate(-90deg);
-    -o-transform: rotate(-90deg);
-    -ms-transform: rotate(-90deg);
-    transform: rotate(-90deg);
-  left: -150%;
-  top: -79%;
+  -moz-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+  right: 150%;
+  bottom: 79%;
   background-position: center;
 
+  -webkit-transition: opacity 15s ease-in-out;
+  -moz-transition: opacity 15s ease-in-out;
+  -o-transition: opacity 15s ease-in-out;
+  transition: opacity 15s ease-in-out;
 }
 
 .container3 {
@@ -48,8 +64,8 @@
     -o-transform: rotate(90deg);
     -ms-transform: rotate(90deg);
     transform: rotate(90deg);
-  top: -113%;
-  left: 37%;
+  bottom: 114%;
+  left: 38%;
 }
 
 .container4 {
@@ -58,12 +74,14 @@
     -o-transform: rotate(180deg);
     -ms-transform: rotate(180deg);
     transform: rotate(180deg);
-  bottom: 191%;
+  bottom: 193%;
   right: 113%;
 }
 
 .container5 {
-  left: 170%;
+  left: 153%;
+  top: 16%;
+  width: 117%;
 }
 
 .container6 {
@@ -72,7 +90,7 @@
     -o-transform: rotate(90deg);
     -ms-transform: rotate(90deg);
     transform: rotate(90deg);
-    top: 40%;
+    top: 54%;
     left: 85%;
 }
 
@@ -82,7 +100,7 @@
     -o-transform: rotate(180deg);
     -ms-transform: rotate(180deg);
     transform: rotate(180deg);
-    bottom: 91%;
+    bottom: 77%;
     right: 290%;
 }
 
@@ -93,7 +111,7 @@
     -o-transform: rotate(-90deg);
     -ms-transform: rotate(-90deg);
     transform: rotate(-90deg);
-  bottom: 331.5%;
+  bottom: 315.5%;
   right: 204%;
 }
 
@@ -101,24 +119,30 @@
 .art {
   height: 100%;
   width: 100%;
-  /*animation: turnit 120s infinite linear;*/
-  /*background-position: center;*/
-  background-size: 150% 150%;
   background-repeat: no-repeat;
-  /*background-origin: border-box;*/
-
 }
 
 .art2 {
   height: 100%;
   width: 100%;
-  /*animation: turnit 120s infinite linear;*/
   background-position: center;
-  /*background-size: 125% 125%;*/
   background-repeat: no-repeat;
-  /*background-origin: border-box;*/
+}
 
+@media only screen and (max-width: 700px) {
+    .body {
+      height: 300px;
+      width: 300px;
+        /*background-color: lightblue;*/
+    }
+}
 
+@media only screen and (max-width: 550px) {
+  .body {
+    margin-top: 60px;
+    height: 190px;
+    width: 190px;
+  }
 }
 
 .rotate-scale-up {
@@ -152,8 +176,8 @@
             transform: scale(2) rotateZ(0);
   }
   50% {
-    -webkit-transform: scale(2) rotateZ(180deg);
-            transform: scale(2) rotateZ(180deg);
+    -webkit-transform: scale(3) rotateZ(180deg);
+            transform: scale(3) rotateZ(180deg);
   }
   100% {
     -webkit-transform: scale(2) rotateZ(360deg);
@@ -166,8 +190,8 @@
             transform: scale(2) rotateZ(0);
   }
   50% {
-    -webkit-transform: scale(2) rotateZ(180deg);
-            transform: scale(2) rotateZ(180deg);
+    -webkit-transform: scale(3) rotateZ(180deg);
+            transform: scale(3) rotateZ(180deg);
   }
   100% {
     -webkit-transform: scale(2) rotateZ(360deg);

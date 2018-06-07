@@ -84,26 +84,28 @@ describe('API tests', function() {
     });
   });
 
-  // describe('GET 1 user by username and password endpoint', function() {
-  //   it('should return a specific user', function() {
-  //     let findUser = {};
-  //     return User
-  //       .findOne()
-  //       .then(function(res) {
-  //         findUser = res;
-  //         // console.log('res');
-  //         // console.log(res);
-  //         return chai.request(app)
-  //           .get(`/user/${res.userName}/${res.password}`)
-  //       })
-  //       .then(function(res) {
-  //         expect(res).to.have.status(200);
-  //         expect(findUser.userName).to.equal(`${res.body.userName}`);
-  //         expect(findUser.password).to.equal(`${res.body.password}`);
-  //
-  //       });
-  //   });
-  // });
+  describe('GET 1 user by username and password endpoint', function() {
+    it('should return a specific user', function() {
+      let findUser = {};
+      return User
+        .findOne()
+        .then(function(res) {
+          findUser = res;
+          // console.log('res');
+          // console.log(res);
+          return chai.request(app)
+            .get(`/user/${res.userName}/${res.password}`)
+        })
+        .then(function(res) {
+          console.log(findUser.userName);
+          console.log(res.body);
+          expect(res).to.have.status(200);
+          expect(findUser.userName).to.equal(res.body.userName);
+          expect(findUser.password).to.equal(res.body.password);
+
+        });
+    });
+  });
 
 
   describe('POST user endpoint', function() {
@@ -111,7 +113,7 @@ describe('API tests', function() {
       const newUser = generateUser();
 
       return chai.request(app)
-        .post('/user')
+        .post('/new-user')
         .send(newUser)
         .then(function(res) {
           expect(res).to.have.status(201);
@@ -119,11 +121,30 @@ describe('API tests', function() {
           expect(res.body).to.be.a('object');
           expect(res.body.id).to.not.be.null;
           expect(res.body).to.include.keys(
-            'name', 'userName', 'password', 'email', 'id');
+            'fullName', 'userName', 'password', 'email', 'id');
         });
     });
   });
 
+  describe('DELETE user', function() {
+    it('should delete a single user by id', function() {
+      let user;
+
+      return User
+        .findOne()
+        .then(function(res) {
+          user = res;
+          return chai.request(app).delete(`/user/${user._id}`);
+        })
+        .then(function(res) {
+          expect(res).to.have.status(204);
+          return User.findById(user._id);
+        })
+        .then(function(res) {
+          expect(res).to.be.null;
+        });
+    });
+  });
   // describe('PUT user endpoint', function() {
   //   it('should update fields in user profile', function() {
   //     const updateData = {

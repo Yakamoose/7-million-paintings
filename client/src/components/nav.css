@@ -18,10 +18,21 @@ a {
 
 .nav-right {
   float: right;
+  font-size: 14px;
 }
 
 .title {
   clear: right;
   clear: left;
-  font-size: 20px;
+  font-size: 16px;
+}
+
+@media only screen and (max-width: 550px) {
+  .title {
+    font-size: 14px;
+  }
+  .nav-right {
+    padding-top: 3px;
+    font-size: 10px;
+  }
 }

@@ -6,11 +6,29 @@ import LogIn from './login';
 import './art.css';
 
 
+let images2 = [
+  '1178910',
+  '641239',
+  '772323',
+  '1045118',
+  '1178910',
+  '641239',
+  '772323',
+  '1045118',
+  '1178910',
+  '641239',
+  '772323',
+  '1045118',
+]
+
 let images = [
-  '1178910',
-  '1178910',
-  '1178910',
-  '1178910'
+  '2184135',
+  '1219979',
+  '1288797'
+]
+
+let singleImages = [
+
 ]
 
 const length = images.length;
@@ -31,16 +49,16 @@ function shuffle(array) {
 
 lineUp = shuffle(lineUp);
 
-function displayA(item, index, className) {
-  var elems = document.getElementsByClassName(`${className}`);
+function displayA(item, index, collection) {
+  var elems = document.getElementsByClassName('art');
   for (var i = 0; i < elems.length; i++) {
     elems[i].style.backgroundImage = `url(https://source.unsplash.com/collection/${images[item]}/1000x1000)`;
   }
   console.log(item);
 }
 
-function displayB(item, index, className) {
-  var elems = document.getElementsByClassName(`${className}`);
+function displayB(item, index, collection) {
+  var elems = document.getElementsByClassName('art2');
   for (var i = 0; i < elems.length; i++) {
     elems[i].style.backgroundImage = `url(https://source.unsplash.com/collection/${images[item]}/1000x1000)`;
   }
@@ -49,7 +67,7 @@ function displayB(item, index, className) {
 
 lineUp.forEach(function(item, index) {
   setTimeout(function() {
-    displayA(item, index, 'art');
+    displayA(item, index, 1178910);
   }, index * 5000)
 });
 
@@ -60,7 +78,7 @@ console.log(lineUp+lineUpB);
 
 lineUpB.forEach(function(item, index) {
   setTimeout(function() {
-    displayB(item, index, 'art2');
+    displayB(item, index, 641239);
   }, index * 4000)
 });
 
@@ -101,5 +119,6 @@ export default function Art() {
       </div>
     </div>
     </div>
+
   );
 }

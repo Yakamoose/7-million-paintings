@@ -2,17 +2,20 @@
 
 const express = require('express');
 // const cors = require('cors');
-const {PORT, DATABASE_URL} = require('./config');
-const {User} = require('./models');
-
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
 mongoose.Promise = global.Promise;
 
+const {PORT, DATABASE_URL} = require('./config');
+const {User} = require('./models');
+
+
 const app = express();
-app.use(express.static('public'));
+// app.use(express.static('public'));
+app.use(bodyParser.urlencoded({extended : true}));
 app.use(bodyParser.json());
+
 
 // app.use(
 //     cors({
@@ -21,13 +24,27 @@ app.use(bodyParser.json());
 // );
 app.use(function (req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Origin', 'Content-Type');
+  // res.header('Access-Control-Allow-Headers', 'Content-Type');
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   // res.header('Access-Control-Allow-Origin', 'GET');
-  res.header('Access-Control-Allow-Origin', 'GET, POST, PUT, PATCH, DELETE');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE');
 
   next();
 });
 
+app.get('/users', (req, res) => {
+  User
+    .find()
+    .then(users => {
+      res.json(users.map(
+          (user) => user.serialize())
+      );
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({ message: 'Internal server error' });
+    });
+});
 
 app.get('/user/:id', (req, res) => {
   User
@@ -56,7 +73,10 @@ app.get('/user/:userName/:password', (req, res) => {
     })
 })
 
-app.post('/user', (req, res) => {
+app.post('/new-user', (req, res) => {
+  // console.log('req.body');
+  // console.log(req.body);
+
   const requiredFields = ['firstName', 'lastName', 'userName', 'password', 'email'];
   for (let i = 0; i < requiredFields.length; i++) {
     const field = requiredFields[i];
@@ -82,32 +102,33 @@ app.post('/user', (req, res) => {
     });
 });
 
-app.listen(8080);
-
-
-
-app.use('*', function (req, res) {
-  res.status(404).json({ message: 'Not Found' });
+app.delete('/user/:id', (req, res) => {
+  User
+  .findByIdAndRemove(req.params.id)
+  .then(post => res.status(204).end())
+  .catch(err => res.status(500).json({ message: 'Internal server error' }));
 });
 
-
+// app.use('*', function (req, res) {
+//   console.log('uh oh');
+//   res.status(404).json({ message: 'Not Found' });
+// });
 
 let server;
 
 function runServer(databaseUrl, port = PORT) {
   return new Promise((resolve, reject) => {
     console.log('Starting server');
-    console.log(port);
     mongoose.connect(databaseUrl, err => {
       if (err) {
         return reject(err);
       }
-      console.log(port);
       server = app.listen(port, () => {
         console.log(`Your app is listening on port ${port}`);
         resolve();
       })
         .on('error', err => {
+          console.log('in error');
           mongoose.disconnect();
           reject(err);
         });
@@ -131,6 +152,6 @@ function closeServer() {
 
 if (require.main === module) {
   runServer(DATABASE_URL).catch(err => console.error(err));
-}
+};
 
 module.exports = { app, runServer, closeServer };

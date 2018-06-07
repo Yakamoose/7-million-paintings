@@ -2,56 +2,18 @@ import React from 'react';
 import {reduxForm, Field, SubmissionError, focus} from 'redux-form';
 import Input from './input';
 import {required, nonEmpty, email} from '../validators';
+import {postNewUser} from '../actions';
+import {connect} from 'react-redux';
+
 
 import './register-form.css'
 
 export class RegisterUserForm extends React.Component {
+
     onSubmit(values) {
-      console.log(values);
-      // this.props.dispatch(addList(title));
-        return fetch('/test', {
-            method: 'GET',
-            body: JSON.stringify(values),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-            .then(res => {
-                if (!res.ok) {
-                    if (
-                        res.headers.has('content-type') &&
-                        res.headers
-                            .get('content-type')
-                            .startsWith('application/json')
-                    ) {
-                        // It's a nice JSON error returned by us, so decode it
-                        return res.json().then(err => Promise.reject(err));
-                    }
-                    // It's a less informative error returned by express
-                    return Promise.reject({
-                        code: res.status,
-                        message: res.statusText
-                    });
-                }
-                return;
-            })
-            .then(() => console.log('Submitted with values', values))
-            .catch(err => {
-                const {reason, message, location} = err;
-                if (reason === 'ValidationError') {
-                    // Convert ValidationErrors into SubmissionErrors for Redux Form
-                    return Promise.reject(
-                        new SubmissionError({
-                            [location]: message
-                        })
-                    );
-                }
-                return Promise.reject(
-                    new SubmissionError({
-                        _error: 'Error submitting form, please fill out ALL fields'
-                    })
-                );
-            });
+      // values.type = 'user';
+      this.props.postNewUser(values);
+      // this.props.dispatch(postNewUser(values));
     }
 
     render() {
@@ -59,7 +21,7 @@ export class RegisterUserForm extends React.Component {
         if (this.props.submitSucceeded) {
             successMessage = (
                 <div className="message message-success">
-                    Message submitted successfully
+                    New user submitted successfully
                 </div>
             );
         }
@@ -102,7 +64,7 @@ export class RegisterUserForm extends React.Component {
                     validate={[required, nonEmpty, email]}
                 />
                 <Field
-                    name="username"
+                    name="userName"
                     type="text"
                     component={Input}
                     label="User Name"
@@ -125,10 +87,10 @@ export class RegisterUserForm extends React.Component {
     }
 }
 
-
+const mapDispatchToProps = {
+  postNewUser
+}
 
 export default reduxForm({
-    form: 'register',
-    onSubmitFail: (errors, dispatch) =>
-        dispatch(focus('register', Object.keys(errors)[0]))
+    form: 'register'
 })(RegisterUserForm);

@@ -1,0 +1,22 @@
+* {
+  box-sizing: border-box;
+}
+
+.intro {
+  margin-top: 10%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 30px;
+
+  text-align: center;
+  border: 6px solid ivory;
+  border-radius: 3%;
+
+  width: fit-content;
+}
+
+button {
+  margin: 20px;
+  width: 150px;
+  height: 40px;
+}
