@@ -1,35 +1,45 @@
 import React from 'react';
 import {reduxForm, Field, SubmissionError, focus} from 'redux-form';
+import axios from "axios";
+import history from '../history';
+
 import Input from './input';
 import {required, nonEmpty, email} from '../validators';
 
 import {connect} from 'react-redux';
 
-import {login} from '../actions';
+
+import {loginSuccess, loginError} from '../actions';
 
 import './login.css';
 
 export class LogInForm extends React.Component {
-  onSubmit(values) {
-    login(values);
+  constructor(props) {
+    super(props);
+  }
+
+  onSubmit(user) {
+    // console.log(user);
+
+    axios.get(`http://localhost:8080/user/${user.username}/${user.password}`)
+      .then((res) => {
+        console.log(res.data);
+        localStorage.setItem('userId', res.data.id);
+
+        if(res.data.message === 'user not found') {
+          this.props.dispatch(loginError(res.data));
+        }
+        else if(res.data.userName != null) {
+          this.props.dispatch(loginSuccess(res.data));
+          history.push('/art');
+          // window.location = '/art';
+        }
+      });
+
   }
 
   render() {
-      let successMessage;
-      if (this.props.submitSucceeded) {
-          successMessage = (
-              <div className="message message-success">
-                  New user submitted successfully
-              </div>
-          );
-      }
 
-      let errorMessage;
-      if (this.props.error) {
-          errorMessage = (
-              <div className="message message-error">{this.props.error}</div>
-          );
-      }
 
       return (
           <form
@@ -38,8 +48,6 @@ export class LogInForm extends React.Component {
               )}>
               <h1>Log In</h1>
 
-              {successMessage}
-              {errorMessage}
               <Field
                   name="username"
                   type="text"

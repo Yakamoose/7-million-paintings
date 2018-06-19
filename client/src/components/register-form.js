@@ -1,37 +1,76 @@
 import React from 'react';
 import {reduxForm, Field, SubmissionError, focus} from 'redux-form';
+import axios from "axios";
+import history from '../history';
+
+
 import Input from './input';
 import {required, nonEmpty, email} from '../validators';
-import {postNewUser} from '../actions';
+import {registerSuccess, registerError} from '../actions';
 import {connect} from 'react-redux';
 
 
 import './register-form.css'
 
 export class RegisterUserForm extends React.Component {
+  constructor(props) {
+    super(props);
 
-    onSubmit(values) {
-      // values.type = 'user';
-      this.props.postNewUser(values);
-      // this.props.dispatch(postNewUser(values));
+    this.onSubmit = this.onSubmit.bind(this);
+
+    this.state = {
+      firstName: '',
+      fullName: '',
+      id: '',
+      email: '',
+      username: '',
+      loggedIn: false
+    }
+  };
+    onSubmit(user) {
+      // console.log(this.state);
+
+      axios({
+        method: 'POST',
+        url: 'http://localhost:8080/new-user',
+        headers: {
+          "Content-Type": "application/json"
+        },
+        data: JSON.stringify(user)
+      }).then((res) => {
+        // console.log(res.data);
+        localStorage.setItem('userId', res.data.id);
+
+
+        if(res.data.message === 'User already exists') {
+          this.props.dispatch(registerError(res.data));
+
+          this.setState ({
+            loggedIn: false
+          });
+        }
+        else if (res.data.userName != null) {
+          this.props.dispatch(registerSuccess(res.data));
+
+          this.setState ({
+            firstName: res.data.firstName,
+            fullName: res.data.fullName,
+            id: res.data.id,
+            email: res.data.email,
+            username: res.data.userName,
+            loggedIn: true
+          });
+          history.push('/art');
+
+          console.log(this.state);
+        }
+      });
+
+
+      // this.props.dispatch(register(user));
     }
 
     render() {
-        let successMessage;
-        if (this.props.submitSucceeded) {
-            successMessage = (
-                <div className="message message-success">
-                    New user submitted successfully
-                </div>
-            );
-        }
-
-        let errorMessage;
-        if (this.props.error) {
-            errorMessage = (
-                <div className="message message-error">{this.props.error}</div>
-            );
-        }
 
         return (
             <form
@@ -40,8 +79,6 @@ export class RegisterUserForm extends React.Component {
                 )}>
                 <h1>Register New User</h1>
 
-                {successMessage}
-                {errorMessage}
                 <Field
                     name="firstName"
                     type="text"
@@ -87,9 +124,21 @@ export class RegisterUserForm extends React.Component {
     }
 }
 
-const mapDispatchToProps = {
-  postNewUser
-}
+const mapStateToProps = (state) => ({
+    firstName: state.firstName,
+    fullName: state.fullName,
+    id: state.id,
+    email: state.email,
+    username: state.userName,
+    loggedIn: state.loggedIn
+})
+
+
+
+RegisterUserForm = connect(mapStateToProps)(RegisterUserForm);
+// const mapDispatchToProps = {
+//   register
+// }
 
 export default reduxForm({
     form: 'register'

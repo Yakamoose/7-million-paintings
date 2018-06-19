@@ -11,7 +11,10 @@ const userSchema = mongoose.Schema({
   email: {type: String, required: true},
   created: {type: Date, default: Date.now},
   id: {type: String, default: uuidv4()},
-
+  gallery: [{
+    imgA: String,
+    imgB: String
+  }]
 });
 
 userSchema.virtual('fullName').get(function() {
@@ -28,7 +31,7 @@ userSchema.methods.serialize = function() {
     email: this.email,
     created: this.created,
     id: this._id,
-    orders: this.orders
+    gallery: this.gallery
   };
 };
 

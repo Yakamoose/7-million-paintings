@@ -1,25 +1,42 @@
-import {REGISTER_USER_SUCCESS, LOGIN_SUCCESS} from './actions';
+import {LOGIN_SUCCESS, LOGIN_ERROR, REGISTER_SUCCESS, REGISTER_ERROR} from './actions';
 
-const initialState = {};
+const initialState = {
+  loggedIn: false
+};
 
 export const millionReducer = (state=initialState, action) => {
-  if (action.type === REGISTER_USER_SUCCESS) {
+  if (action.type === LOGIN_SUCCESS) {
     console.log(action);
     return Object.assign({}, state, {
-      firstName: action.newUser.firstName,
-      fullName: action.newUser.fullName,
-      userName: action.newUser.username,
-      email: action.newUser.email,
-      id: action.newUser.id
+      firstName: action.firstName,
+      fullName: action.fullName,
+      id: action.id,
+      email: action.email,
+      username: action.userName,
+      loggedIn: action.loggedIn
     });
   }
-  else if (action.type === LOGIN_SUCCESS) {
+  else if(action.type === LOGIN_ERROR) {
+    console.log(action);
     return Object.assign({}, state, {
-      firstName: action.user.firstName,
-      fullName: action.user.fullName,
-      userName: action.user.username,
-      email: action.user.email,
-      id: action.user.id
+      loggedIn: action.loggedIn
+    })
+  }
+  else if (action.type === REGISTER_SUCCESS) {
+    console.log(action);
+    return Object.assign({}, state, {
+      firstName: action.firstName,
+      fullName: action.fullName,
+      id: action.id,
+      email: action.email,
+      username: action.userName,
+      loggedIn: action.loggedIn
+    })
+  }
+  else if (action.type === REGISTER_ERROR) {
+    console.log(action);
+    return Object.assign({}, state, {
+      loggedIn: action.loggedIn
     })
   }
   return state;

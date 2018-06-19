@@ -5,8 +5,6 @@
   height: 44%;
   top: 4%;
   left: 51%;
-  /*padding-bottom: 50px;*/
-
 }
 
 #art2 {
@@ -15,10 +13,15 @@
   height: 44%;
   top: -47%;
   left: 51%;
-  /*padding-bottom: 50px;*/
 }
 
-.body {
+p {
+  padding: 20px 20px 0 20px;
+  font-size: 20px;
+}
+
+
+.art-body {
   /*border: 3px solid black;*/
   height: 420px;
   width: 420px;
@@ -26,7 +29,16 @@
   margin-left: auto;
   margin-right: auto;
   transform: rotate(-45deg);
+}
 
+.art-body::hover {
+  border: 3px solid black;
+
+}
+
+.btn {
+
+  width: 200px;
 }
 
 
@@ -39,7 +51,7 @@
 }
 
 .container1 {
-
+  /*benchmark for other positioning*/
 }
 
 .container2 {
@@ -130,7 +142,7 @@
 }
 
 @media only screen and (max-width: 700px) {
-    .body {
+    .art-body {
       height: 300px;
       width: 300px;
         /*background-color: lightblue;*/
@@ -138,7 +150,7 @@
 }
 
 @media only screen and (max-width: 550px) {
-  .body {
+  .art-body {
     margin-top: 60px;
     height: 190px;
     width: 190px;
@@ -172,29 +184,29 @@
 
 @-webkit-keyframes rotate-scale-up {
   0% {
-    -webkit-transform: scale(2) rotateZ(0);
-            transform: scale(2) rotateZ(0);
+    -webkit-transform: scale(1) rotateZ(0);
+            transform: scale(1) rotateZ(0);
   }
   50% {
-    -webkit-transform: scale(3) rotateZ(180deg);
-            transform: scale(3) rotateZ(180deg);
+    -webkit-transform: scale(1.5) rotateZ(180deg);
+            transform: scale(1.5) rotateZ(180deg);
   }
   100% {
-    -webkit-transform: scale(2) rotateZ(360deg);
-            transform: scale(2) rotateZ(360deg);
+    -webkit-transform: scale(1) rotateZ(360deg);
+            transform: scale(1) rotateZ(360deg);
   }
 }
 @keyframes rotate-scale-up {
   0% {
-    -webkit-transform: scale(2) rotateZ(0);
-            transform: scale(2) rotateZ(0);
+    -webkit-transform: scale(1) rotateZ(0);
+            transform: scale(1) rotateZ(0);
   }
   50% {
-    -webkit-transform: scale(3) rotateZ(180deg);
-            transform: scale(3) rotateZ(180deg);
+    -webkit-transform: scale(1.5) rotateZ(180deg);
+            transform: scale(1.5) rotateZ(180deg);
   }
   100% {
-    -webkit-transform: scale(2) rotateZ(360deg);
-            transform: scale(2) rotateZ(360deg);
+    -webkit-transform: scale(1) rotateZ(360deg);
+            transform: scale(1) rotateZ(360deg);
   }
 }

@@ -1,55 +1,58 @@
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
+import * as actionCreators from '../actions';
+import history from '../history'
+
 import React from 'react';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import {Router, Route} from 'react-router-dom';
+
 import NavBar from './nav';
 import RegisterUserForm from './register-form';
 import Art from './art';
 import LogIn from './login';
 import Intro from './intro';
-
-import {postNewUser} from '../actions';
-
-import {connect} from 'react-redux';
+import Gallery from './gallery';
 
 
 import './app.css';
 
-export class App extends React.Component {
-  postNewUser(user) {
-    // this.props.dispatch(postNewUser(user));
-    let testUser = {
-      firstName: 'Eric',
-      lastName: 'Johnson',
-      userName: 'yaka',
-      password: 'pass'
-    }
-    this.props.dispatch(postNewUser(testUser));
-  }
 
-    render() {
+
+export class App extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+
       return (
       <div>
-        <NavBar />
-        <h1>{this.props.title}</h1>
-        <Router>
+        <Router history={history}>
           <div>
-          <Route path="/" component={Intro} />
-          <Route path="/art" component={Art} />
+          <NavBar info={this.props.millionReducer} />
+          <Route exact path="/" component={Intro} />
+          <Route exact path="/signup" component={RegisterUserForm} />
+          <Route exact path="/login"  component={LogIn} />
+          <Route exact path="/art" component={Art} />
+          <Route exact path="/gallery" component={Gallery} />
           </div>
         </Router>
-        <RegisterUserForm
-          type="user"
-          postNewUser={user => this.postNewUser(user)}
-        />
       </div>
     );
   }
 }
 
-const mapDispatchToProps = {
-  postNewUser
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(actionCreators, dispatch);
 }
 
-const mapStateToProps = state => ({
-  user: state.user
-});
-export default connect(mapStateToProps)(App);
+function mapStateToProps(state) {
+  return state;
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
+
+
+// <RegisterUserForm
+//   type="user"
+//   postNewUser={user => console.log(user)}
+// />

@@ -9,6 +9,10 @@ import Art from './components/art';
 // import RegisterUserForm from './components/app'
 // import registerServiceWorker from './registerServiceWorker';
 
+// import configureStore from './store';
+//
+// const store = configureStore;
+
 ReactDOM.render(
   <Provider store={store} >
     <App />
