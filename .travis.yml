@@ -17,4 +17,4 @@ language: node_js
    script: netlify deploy -s df330815-eb58-418b-84c9-6d4c66154f74 -t df330815-eb58-418b-84c9-6d4c66154f74 -p ./build
    skip_cleanup: true
    on:
-     branch: master
+     branch: master  
