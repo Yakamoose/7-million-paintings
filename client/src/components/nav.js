@@ -35,7 +35,7 @@ export default class NavBar extends React.Component {
                 <span onClick={this.onLogOutClick}>LOG OUT</span>
             </li>
             <li className="title">
-              <Link className="glitch" data-text="7 MILLION PAINTINGS" to={'/art'}>7 MILLION PAINTINGS</Link>
+              <Link className="glitch" to={'/art'}>Yaka moose</Link>
             </li>
 
           </ul>
@@ -50,7 +50,7 @@ export default class NavBar extends React.Component {
                 <Link to={'/login'}>LOG IN</Link>
             </li>
             <li className="title">
-              <Link className="glitch" data-text="7 MILLION PAINTINGS" to={'/'}>7 MILLION PAINTINGS</Link>
+              <Link className="glitch" to={'/'}>Yaka moose</Link>
             </li>
           </ul>
         </nav>
