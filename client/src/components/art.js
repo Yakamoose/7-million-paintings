@@ -91,21 +91,8 @@ let images = [
   `url('https://i.ytimg.com/vi/IguCBjbVBLM/maxresdefault.jpg')`,
   `url('https://i.ytimg.com/vi/_06fTFFMoi0/hqdefault.jpg')`,
   `url('https://patternsandco.files.wordpress.com/2017/09/brian-eno-thursday-afternoon-61-minute-version.jpg?w=525')`
-  // `url('https://source.unsplash.com/collection/772323/1000x1000')`,
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  // `url('https://source.unsplash.com/collection/772323/1000x1000')`
+  
 ]
 
 const length = images.length;
@@ -240,12 +227,12 @@ export class Art extends React.Component {
           </div>
         </div>
 
-        <button className="btn" onClick={this.handleClick}>SAVE THIS IMAGE</button>
       </div>
     );
   }
 }
 
+// <button className="btn" onClick={this.handleClick}>SAVE THIS IMAGE</button>
 
 const mapStateToProps = (state) => ({
   imageA: state.imageA,
