@@ -35,6 +35,13 @@ function generateUser() {
   };
 };
 
+function generateArtSample() {
+  return {
+    imgA: "url(`"+faker.image.imageUrl()+"`)",
+    imgB: "url(`"+faker.image.imageUrl()+"`)"
+  }
+}
+
 
 
 function tearDownDb() {
@@ -91,14 +98,10 @@ describe('API tests', function() {
         .findOne()
         .then(function(res) {
           findUser = res;
-          // console.log('res');
-          // console.log(res);
           return chai.request(app)
             .get(`/user/${res.userName}/${res.password}`)
         })
         .then(function(res) {
-          console.log(findUser.userName);
-          console.log(res.body);
           expect(res).to.have.status(200);
           expect(findUser.userName).to.equal(res.body.userName);
           expect(findUser.password).to.equal(res.body.password);
@@ -126,6 +129,29 @@ describe('API tests', function() {
     });
   });
 
+  describe('PUT save image to users gallery', function() {
+    it('should add art to users profile', function() {
+        const testArt = generateArtSample();
+
+        return User
+          .findOne()
+          .then(function(res) {
+            // console.log(res._id)
+            testArt.id = res._id;
+            console.log(testArt);
+            // console.log('testOrder');
+            return chai.request(app)
+              .put(`/save-image/${testArt.id}`)
+              .send(testArt)
+          })
+          .then(function(res) {
+            console.log(res.body);
+            expect(res).to.have.status(200);
+            return User.findById(testArt.id);
+          })
+    });
+  });
+
   describe('DELETE user', function() {
     it('should delete a single user by id', function() {
       let user;
@@ -145,88 +171,5 @@ describe('API tests', function() {
         });
     });
   });
-  // describe('PUT user endpoint', function() {
-  //   it('should update fields in user profile', function() {
-  //     const updateData = {
-  //       firstName: "test name",
-  //       password: "new password from test"
-  //     };
-  //
-  //     return User
-  //       .findOne()
-  //       .then(function(res) {
-  //         updateData.id = res._id;
-  //         return chai.request(app)
-  //           .put(`/user/${res._id}`)
-  //           .send(updateData);
-  //       })
-  //       .then(function(res) {
-  //         expect(res).to.have.status(200);
-  //         return User.findById(updateData.id);
-  //       })
-  //       .then(function(res) {
-  //         expect(res.firstName).to.equal(updateData.firstName);
-  //         expect(res.password).to.equal(updateData.password);
-  //       });
-  //   });
-  // });
-  //
-  // describe('PUT create order for a user', function() {
-  //   it('should add an order to a users profile', function() {
-  //       const testOrder = generateOrder();
-  //       const testOrder2 = generateOrder();
-  //       const testOrder3 = generateOrder();
-  //
-  //       return User
-  //         .findOne()
-  //         .then(function(res) {
-  //           // console.log(res._id)
-  //           testOrder.id = res._id;
-  //           // console.log(testOrder);
-  //           // console.log('testOrder');
-  //           return chai.request(app)
-  //             .put(`/user/order/${testOrder.id}`)
-  //             .send(testOrder)
-  //         })
-  //         .then(function(res) {
-  //           return chai.request(app)
-  //             .put(`/user/order/${testOrder.id}`)
-  //             .send(testOrder2);
-  //         })
-  //         .then(function(res) {
-  //           return chai.request(app)
-  //             .put(`/user/order/${testOrder.id}`)
-  //             .send(testOrder3);
-  //         })
-  //         .then(function(res) {
-  //           expect(res).to.have.status(200);
-  //           return User.findById(testOrder.id);
-  //         })
-  //         .then(function(res) {
-  //           // console.log('ender  hello hello hello');
-  //           // console.log(res);
-  //         })
-  //   });
-  // });
-  //
-  // describe('DELETE user', function() {
-  //   it('should delete a single user by id', function() {
-  //     let user;
-  //
-  //     return User
-  //       .findOne()
-  //       .then(function(res) {
-  //         user = res;
-  //         return chai.request(app).delete(`/user/${user._id}`);
-  //       })
-  //       .then(function(res) {
-  //         expect(res).to.have.status(204);
-  //         return User.findById(user._id);
-  //       })
-  //       .then(function(res) {
-  //         expect(res).to.be.null;
-  //       });
-  //   });
-  // });
 
 });

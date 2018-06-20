@@ -121,14 +121,14 @@ app.put('/save-image/:id', (req, res) => {
   let updateId = req.params.id;
 
   User
-    .findById(req.params.id)
+    .findById(updateId)
     .then(function(user) {
 
       user.gallery.push(toUpdate);
       toUpdate = user.gallery;
 
       User
-        .findByIdAndUpdate(updateId, { $set: {gallery: toUpdate}})
+        .findByIdAndUpdate(updateId, { $set: {gallery: toUpdate}}, {new: true})
         .then(user => res.status(200).json(user.serialize()))
         .catch(err => {
           console.error('error' + err);
