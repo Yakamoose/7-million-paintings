@@ -19,10 +19,7 @@ export default class NavBar extends React.Component {
 
 
   render() {
-    // console.log('nav bar render');
-    // console.log(this.props.info);
-
-    //onClick dispatch action to to window.location to '/' so will lose state
+  
 
     if(this.props.info.loggedIn === true) {
       return (
@@ -35,7 +32,7 @@ export default class NavBar extends React.Component {
                 <span onClick={this.onLogOutClick}>LOG OUT</span>
             </li>
             <li className="title">
-              <Link className="glitch" to={'/art'}>Yaka moose</Link>
+              <Link className="glitch" to={'/art'}>7 MILLION PAINTINGS</Link>
             </li>
 
           </ul>
@@ -50,7 +47,7 @@ export default class NavBar extends React.Component {
                 <Link to={'/login'}>LOG IN</Link>
             </li>
             <li className="title">
-              <Link className="glitch" to={'/'}>Yaka moose</Link>
+              <Link className="glitch" to={'/'}>7 MILLION PAINTINGS</Link>
             </li>
           </ul>
         </nav>

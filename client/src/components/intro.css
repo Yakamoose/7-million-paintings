@@ -3,20 +3,34 @@
 }
 
 .intro {
-  margin-top: 10%;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 30px;
-
+  margin: 10% auto;
+  padding: 20px;
   text-align: center;
   border: 6px solid ivory;
   border-radius: 3%;
-
   width: fit-content;
+  /*background-color: grey;*/
+  background-image: linear-gradient(#5D6874, #c2c5c8);
+
+}
+
+p {
+  font-size: 20px;
+  color: ivory;
 }
 
 button {
   margin: 20px;
   width: 150px;
   height: 40px;
+}
+
+#btn {
+  color: dimgrey;
+}
+
+@media only screen and (max-width: 1225px) {
+  .intro {
+    margin: 10%;
+  }
 }

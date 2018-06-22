@@ -6,3 +6,9 @@
 .gallery {
   margin: 20px auto;
 }
+
+h1 {
+  text-align: center;
+  font-style: italic;
+  color: ivory;
+}

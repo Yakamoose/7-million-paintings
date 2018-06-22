@@ -128,8 +128,8 @@
 
 @media only screen and (max-width: 700px) {
     .body {
-      height: 100px;
-      width: 100px;
+      height: 200px;
+      width: 200px;
         /*background-color: lightblue;*/
     }
 }
@@ -137,8 +137,8 @@
 @media only screen and (max-width: 550px) {
   .body {
     margin-top: 60px;
-    height: 100px;
-    width: 100px;
+    height: 200px;
+    width: 200px;
   }
 }
 

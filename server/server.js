@@ -90,7 +90,7 @@ app.post('/new-user', (req, res) => {
   User
     .findOne({userName: req.body.userName, password: req.body.password })
     .then(user => {
-      console.log(user);
+      // console.log(user);
       if(user === null) {
         User
           .create({

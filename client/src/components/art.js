@@ -90,9 +90,46 @@ let images = [
   `url('https://i.ytimg.com/vi/nTm5j2dexXg/maxresdefault.jpg')`,
   `url('https://i.ytimg.com/vi/IguCBjbVBLM/maxresdefault.jpg')`,
   `url('https://i.ytimg.com/vi/_06fTFFMoi0/hqdefault.jpg')`,
-  `url('https://patternsandco.files.wordpress.com/2017/09/brian-eno-thursday-afternoon-61-minute-version.jpg?w=525')`
+  `url('https://patternsandco.files.wordpress.com/2017/09/brian-eno-thursday-afternoon-61-minute-version.jpg?w=525')`,
   // `url('https://source.unsplash.com/collection/772323/1000x1000')`
-  
+  `url('https://i.ytimg.com/vi/r9t8kQrNbTw/maxresdefault.jpg')`,
+  `url('https://i.ytimg.com/vi/VRkNrWp6tLg/hqdefault.jpg')`,
+  `url('https://i.ytimg.com/vi/-PrvEjhnxy8/hqdefault.jpg')`,
+  `url('http://www.losanjealous.com/img/77mil3.jpg')`,
+  `url('https://pbs.twimg.com/media/CsR9p8SUIAETIFW.jpg')`,
+  `url('http://www.culture24.org.uk/asset_arena/8/90/5098/v0_master.jpg')`,
+  `url('http://cdm.link/files//2007/06/eno.jpg')`,
+  `url('https://i.pinimg.com/originals/15/db/d0/15dbd01c3bafd6d3f520653037df4ca1.jpg')`,
+  `url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4vfllOIx4L4A47XqKnXXkPCiZn1lZxxUj3pW88OwBD8gh4WRW')`,
+  `url('http://balticplus.uk/images/14251/7/820x695_s0_f0_n1_cffffff_m0_q90/0/0/?_=vZPDO')`,
+  `url('https://i.ytimg.com/vi/iWo8DYKLBzw/maxresdefault.jpg')`,
+  `url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQy9ZkW_alqXOZjJSN5coQyP48FqEAf5wOrIseFDQuZopnph_S5')`,
+  `url('http://www.moredarkthanshark.org/images/77million_iteration3.jpg')`,
+  `url('http://iandimusic.com/weeklynoise/wp-content/uploads/2011/11/77m-10k-members-painting-brian-eno-09_1.jpg')`,
+  `url('https://pbs.twimg.com/media/CsR9p8SUIAETIFW.jpg')`,
+  `url('http://balticplus.uk/images/14251/7/820x695_s0_f0_ce6e6e6_m0_q90/0/0/brian-eno-77-million-paintings/?_=dkH3L')`,
+  `url('http://d3ct8f39dj9jhs.cloudfront.net/wp-content/uploads/2017/06/a-b-IMG_4520-77-extra-closeup-1.jpeg')`,
+  `url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYDjYUkBNON3iof56azkZOTbLpkJ3LbmylKfYBpywZvebyXY-I')`,
+  `url('http://www.beyondchron.org/wp-content/uploads/news_images/2007/eno2a.jpg')`,
+  `url('http://balticplus.uk/images/14248/7/820x695_s0_f0_ce6e6e6_m0_q90/0/0/brian-eno-77-million-paintings/?_=Jh%2FZ5')`,
+  `url('http://artweek.la/upload/2654/venice.jpg')`,
+  `url('http://media.longnow.org/files/2/longphoto-77million-006.jpg')`,
+  `url('https://laughingsquid.com/wp-content/uploads/brian_eno_77_million.jpg')`,
+  `url('https://i.pinimg.com/originals/40/6e/09/406e09cad4c17252211d3cd2c5d2a66d.jpg')`,
+  `url('https://i.pinimg.com/236x/e3/d0/00/e3d0006e7bcfd4dafb649db13df35592--matt.jpg')`,
+  `url('https://pbs.twimg.com/media/DQpxs0WVAAcegtm.jpg')`,
+  `url('https://i.ytimg.com/vi/eoTA9mu3L3k/maxresdefault.jpg')`,
+  `url('https://cdn.dialogues.org/100555/external/5744d3d2e4b01e48b16d6d74/bg_tn_01jvc2c75p_100555.jpg')`,
+  `url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSp95vLxutwSdPuu5-zK2zh-9oDH3IGi-ONftCXZ1BXmKJgwvTs')`,
+  `url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIYR-DQN7Yo1yTUTNBnvpwfsBujDoREZ6XYLn3E7oXMelvAqV6OQ')`,
+  `url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxl2W62-xaFnhlmu5w7KeZc0te2gN9dw0JoYWnEDx-_vIUIcRG')`,
+  `url('https://i.guim.co.uk/img/static/sys-images/Arts/Arts_/Pictures/2010/5/18/1274198207059/77-Million-Paintings-by-B-009.jpg?w=300&q=55&auto=format&usm=12&fit=max&s=89c73fe35b668188b62a918150206d89')`,
+  `url('https://i.ytimg.com/vi/nTm5j2dexXg/maxresdefault.jpg')`,
+  `url('https://i.ytimg.com/vi/IguCBjbVBLM/maxresdefault.jpg')`,
+  `url('https://i.ytimg.com/vi/_06fTFFMoi0/hqdefault.jpg')`,
+  `url('https://patternsandco.files.wordpress.com/2017/09/brian-eno-thursday-afternoon-61-minute-version.jpg?w=525')`
+  // `url('https://source.unsplash.com/collection/772323/1000x1000')`,
+
 ]
 
 const length = images.length;
@@ -193,7 +230,6 @@ export class Art extends React.Component {
 
     return (
       <div id="toClick">
-      <p className="withfadeout">{this.state.introMessage}</p>
 
         <div className="art-body" onClick={this.handleClick}>
           <div id="art">
@@ -226,6 +262,7 @@ export class Art extends React.Component {
             </div>
           </div>
         </div>
+        <p className="clickText">{this.state.introMessage}</p>
 
       </div>
     );
@@ -234,9 +271,11 @@ export class Art extends React.Component {
 
 // <button className="btn" onClick={this.handleClick}>SAVE THIS IMAGE</button>
 
-const mapStateToProps = (state) => ({
-  imageA: state.imageA,
-  imageB: state.imageB
-})
+// const mapStateToProps = (state) => ({
+//   imageA: state.imageA,
+//   imageB: state.imageB
+// })
+//
+// export default connect(mapStateToProps)(Art);
 
-export default connect(mapStateToProps)(Art);
+export default connect()(Art);

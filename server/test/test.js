@@ -138,7 +138,7 @@ describe('API tests', function() {
           .then(function(res) {
             // console.log(res._id)
             testArt.id = res._id;
-            console.log(testArt);
+            // console.log(testArt);
             // console.log('testOrder');
             return chai.request(app)
               .put(`/save-image/${testArt.id}`)

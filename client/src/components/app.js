@@ -25,15 +25,17 @@ export class App extends React.Component {
   render() {
 
       return (
-      <div>
+      <div className="app">
         <Router history={history}>
           <div>
-          <NavBar info={this.props.millionReducer} />
-          <Route exact path="/" component={Intro} />
-          <Route exact path="/signup" component={RegisterUserForm} />
-          <Route exact path="/login"  component={LogIn} />
-          <Route exact path="/art" component={Art} />
-          <Route exact path="/gallery" component={Gallery} />
+            <NavBar info={this.props.millionReducer} />
+            <div >
+              <Route exact path="/" component={Intro} />
+              <Route exact path="/signup" component={RegisterUserForm} />
+              <Route exact path="/login"  component={LogIn} />
+              <Route exact path="/art" component={Art} />
+              <Route exact path="/gallery" component={Gallery} />
+              </div>
           </div>
         </Router>
       </div>

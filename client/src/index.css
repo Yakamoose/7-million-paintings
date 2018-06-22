@@ -1,10 +1,27 @@
 * {
   box-sizing: border-box;
 }
+html, body { margin: 0; height: 100% }
 
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
-  background-color: grey;
+  font-family: 'Montserrat', sans-serif;
+
+  /*background-color: grey;*/
+  /*background-image: linear-gradient(#c2c5c8, #5D6874);*/
+  -webkit-background-size: cover;
+   -moz-background-size: cover;
+   -o-background-size: cover;
+   background-size: 100%;
+   background-repeat:no-repeat;
+   background: -webkit-linear-gradient( to left top, white, grey);
+   background: -moz-linear-gradient( to left top, white, grey);
+   background: -ms-linear-gradient( to left top, white, grey);
+   background: -o-linear-gradient( to left top, white, grey);
+   background: linear-gradient( to left top, white, grey);
+
+  /*height: 100%;*/
+  /*width: 100%;*/
+  /*min-height: 100%;*/
 }

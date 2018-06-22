@@ -14,7 +14,7 @@ import Art from './components/art';
 // const store = configureStore;
 
 ReactDOM.render(
-  <Provider store={store} >
+  <Provider store={store}>
     <App />
   </Provider>,
   document.getElementById('root')

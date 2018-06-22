@@ -11,11 +11,13 @@ export default function Intro() {
     <div className="intro">
       <h1>7 MILLION PAINTINGS</h1>
       <p>This app composes computer generated art.</p>
+      <p>Enjoy never before seen art and save images you like to your gallery.</p>
+      <p>Coming soon... prints, business cards, &amp; logo designs made with these never before seen images.</p>
       <button id="sign-up" type="submit">
-        <Link to={ {pathname: '/signup'} }>SIGN UP</Link>
+        <Link id="btn" to={ {pathname: '/signup'} }>SIGN UP</Link>
       </button>
       <button id="login">
-        <Link to={ {pathname: '/login'} }>LOG IN</Link>
+        <Link id="btn" to={ {pathname: '/login'} }>LOG IN</Link>
       </button>
     </div>
   );

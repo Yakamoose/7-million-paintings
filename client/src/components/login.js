@@ -63,6 +63,7 @@ export class LogInForm extends React.Component {
                   validate={[required, nonEmpty]}
               />
               <button
+                  id="btn"
                   type="submit"
                   disabled={this.props.pristine || this.props.submitting}>
                   Submit

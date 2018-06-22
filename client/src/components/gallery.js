@@ -21,15 +21,25 @@ export default class Gallery extends React.Component {
     const userId = localStorage.userId;
     console.log(userId);
 
+
     axios.get(`http://localhost:8080/user/${userId}`)
-      .then((res) => {
-        const gallery = res.data.gallery;
-        console.log(res.data.gallery[0]);
-        console.log(res.data.gallery[1]);
-        const imgA = '"'+res.data.gallery[0].imgA+'"';
-        const imgB = '"'+res.data.gallery[0].imgB+'"';
-        component.setState({gallery});
+        .then((res) => {
+          const gallery = res.data.gallery;
+          console.log(res.data.gallery[0]);
+          console.log(res.data.gallery[1]);
+
+          if(res.data.gallery[0] != null) {
+            const imgA = '"'+res.data.gallery[0].imgA+'"';
+            const imgB = '"'+res.data.gallery[0].imgB+'"';
+            component.setState({gallery, message: ''});
+          }else {
+            component.setState({message: 'Click 7 Million Paintings link above to save images to gallery.'})
+          }
       })
+
+
+
+
     }
     // <GalleryArtPiece imgA={this.state.imgA} imgB={this.state.imgB} />;
 
@@ -37,7 +47,7 @@ export default class Gallery extends React.Component {
     let pieces = [];
     for(let i = 0; i < this.state.gallery.length; i++) {
       console.log(this.state.gallery[i]);
-      pieces[i] =  <GalleryArtPiece imgA={this.state.gallery[i].imgA} imgB={this.state.gallery[i].imgB} />;
+      pieces[i] =  <GalleryArtPiece imgA={this.state.gallery[i].imgA} imgB={this.state.gallery[i].imgB} key={i}/>;
     }
 
 
@@ -46,6 +56,7 @@ export default class Gallery extends React.Component {
 
     return (
       <div className="gallery">
+        <h1>{this.state.message}</h1>
         {pieces}
       </div>
 
